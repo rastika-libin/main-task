@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Submitted Details</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 90%;
+            margin: 20px auto;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #888;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        h2 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h2>Submitted Details</h2>
+
+    {% if submissions %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Form ID</th>
+                    <th>User</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Message</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for submission in submissions %}
+                <tr>
+                    <td>{{ submission.id }}</td>
+                    <td>{{ submission.user.username }}</td>
+                    <td>{{ submission.firstname }}</td>
+                    <td>{{ submission.lastname }}</td>
+                    <td>{{ submission.email }}</td>
+                    <td>{{ submission.message }}</td>
+                    <td>{{ submission.date }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p style="text-align:center;">No submissions found.</p>
+    {% endif %}
+</body>
+</html>

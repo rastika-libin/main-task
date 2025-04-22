@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Homepage</title>
+    </head>
+    <body>
+        <h2>Homepage</h2>
+            <div>
+               WELCOME TO HOMEPAGE!
+               {% if request.user.role == "User" %}
+               <div><a href="{% url 'fill_form' %}">Fill Form</a></div>
+               {% endif %}
+               <div><a href="{% url 'view_submissions' %}">View Submissions</a></div>
+               <div><a href="{% url 'logout' %}">Logout</a></div>
+            </div>
+
+
+    </body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>User Page</title>
+    </head>
+    <body>
+        <h2>User Form</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div>
+                <div>
+                    <label for="firstname">First Name:</label><br>
+                    <input type="text" id="firstname" placeholder="Enter firstname" name="firstname" required>
+                </div>
+                <div>
+                    <label for="lastname">Last Name:</label><br>
+                    <input type="text" id="lastname" placeholder="Enter lastname" name="lastname">
+                </div>
+                <div>
+                    <label for="email">Email:</label><br>
+                    <input type="email" id="email" placeholder="Enter email" name="email" required>
+                </div>
+                <div>
+                    <label for="contact">Message:</label><br>
+                    <textarea id="message" name="message" placeholder="Enter your message" required></textarea>
+                </div> 
+                <div>
+                    <button type="submit" id="submit" name="submit">Submit Data</button>
+                </div>
+                <a href="{% url 'homepage' %}">Homepage</a><br>
+                <a href="{% url 'logout' %}">Logout</a>
+            </div>
+        </form>
+    </body>
+    <script>
+        document.querySelector('form').addEventListener('submit', function(event) {
+            const email = document.getElementById('email').value;
+            
+            if (!email.includes('@') || !email.includes('.')) {
+                alert('Please enter a valid email address.');
+                event.preventDefault(); 
+            }
+        });
+    </script>
+</html>
